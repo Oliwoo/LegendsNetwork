@@ -1,0 +1,92 @@
+{
+  "name": "legendsnetwork",
+  "productName": "Legends Network",
+  "version": "1.0.0",
+  "description": "Legends Network Fivem Launcher - Made by Oliwoo#0698",
+  "main": "src/index.js",
+  "author": {
+    "name": "Oliwoo",
+    "email": "Oliwoo@github.com"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "node build.js",
+    "dist": " electron-builder --win --x64",
+    "deploy": "electron-builder build --win --publish always"
+  },
+  "build": {
+    "publish": {
+      "provider": "github",
+      "owner": "Oliwoo",
+      "repo": "LegendsNetwork"
+    },
+    "appId": "com.oliwoo.launchers.LegendsNetwork",
+    "win": {
+      "target": "nsis",
+      "icon": "logo.ico"
+    },
+    "squirrelWindows": {
+      "iconUrl": "https://raw.githubusercontent.com/Oliwoo/LegendsNetwork/main/logo.ico"
+    },
+    "extraResources": [
+      {
+        "from": "node_modules/regedit/vbs",
+        "to": "regedit/vbs",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "Legends Network"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "electron-is-dev": "^2.0.0",
+    "electron-log": "^4.4.1",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^4.3.9",
+    "jquery": "^3.6.0",
+    "node-powershell": "^4.0.0",
+    "regedit": "^3.0.3",
+    "require": "^2.4.20",
+    "shell": "^0.8.4",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "electron": "^13.1.8",
+    "electron-builder": "^22.11.7",
+    "electron-builder-squirrel-windows": "^22.12.0",
+    "electron-json-storage": "^4.5.0",
+    "electron-packager": "^15.3.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-winstaller": "^5.0.0",
+    "yield": "^0.0.6-8"
+  }
+}
